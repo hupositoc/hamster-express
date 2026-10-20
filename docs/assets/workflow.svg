@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-labelledby="title description">
+<title id="title">Hamster Express workflow</title>
+<desc id="description">Explore a complete small gameplay loop: control a hamster, pick up cargo, deliver it to a goal, receive a reward and retain progress between sessions. Flow: Move / interact; Carry cargo; Complete delivery; Reward / save progress</desc>
+<rect width="1280" height="420" rx="24" fill="#ffffff"/>
+<g font-family="sans-serif">
+<text font-family="Arial" x="48" y="54" font-size="20" font-weight="700" fill="#1b64da">INTERACTIVE SYSTEMS / HOBBY</text>
+<text font-family="Arial" x="48" y="112" font-size="44" font-weight="700" fill="#191f28">Hamster Express</text>
+<text font-family="Arial" x="48" y="156" font-size="24" fill="#4e5968">A small delivery game that connects interaction, reward and persistence</text>
+<rect x="48" y="212" width="272" height="144" rx="16" fill="#f2f4f6"/>
+<text font-family="Arial" x="68" y="246" font-size="20" font-weight="700" fill="#1b64da">01</text>
+<text font-family="Arial" x="68" y="284" font-size="24" font-weight="700" fill="#191f28">Move / interact</text>
+<path d="M 327 284 h 17 m -6 -6 l 6 6 -6 6" fill="none" stroke="#1b64da" stroke-width="3"/>
+<rect x="352" y="212" width="272" height="144" rx="16" fill="#f2f4f6"/>
+<text font-family="Arial" x="372" y="246" font-size="20" font-weight="700" fill="#1b64da">02</text>
+<text font-family="Arial" x="372" y="284" font-size="24" font-weight="700" fill="#191f28">Carry cargo</text>
+<path d="M 631 284 h 17 m -6 -6 l 6 6 -6 6" fill="none" stroke="#1b64da" stroke-width="3"/>
+<rect x="656" y="212" width="272" height="144" rx="16" fill="#f2f4f6"/>
+<text font-family="Arial" x="676" y="246" font-size="20" font-weight="700" fill="#1b64da">03</text>
+<text font-family="Arial" x="676" y="284" font-size="24" font-weight="700" fill="#191f28">Complete delivery</text>
+<path d="M 935 284 h 17 m -6 -6 l 6 6 -6 6" fill="none" stroke="#1b64da" stroke-width="3"/>
+<rect x="960" y="212" width="272" height="144" rx="16" fill="#f2f4f6"/>
+<text font-family="Arial" x="980" y="246" font-size="20" font-weight="700" fill="#1b64da">04</text>
+<text font-family="Arial" x="980" y="284" font-size="24" font-weight="700" fill="#191f28">Reward / save</text>
+<text font-family="Arial" x="980" y="314" font-size="24" font-weight="700" fill="#191f28">progress</text>
+<text font-family="Arial" x="48" y="396" font-size="18" fill="#4e5968">Architecture illustration · not a product screenshot or a measured result</text>
+</g></svg>

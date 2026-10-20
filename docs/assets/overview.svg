@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-labelledby="title description">
+<title id="title">Hamster Express overview</title>
+<desc id="description">Explore a complete small gameplay loop: control a hamster, pick up cargo, deliver it to a goal, receive a reward and retain progress between sessions. Flow: Move / interact; Carry cargo; Complete delivery; Reward / save progress</desc>
+<rect width="1280" height="420" rx="24" fill="#ffffff"/>
+<g font-family="sans-serif">
+<text font-family="Arial" x="48" y="54" font-size="20" font-weight="700" fill="#1b64da">INTERACTIVE SYSTEMS / HOBBY</text>
+<text font-family="Arial" x="48" y="112" font-size="44" font-weight="700" fill="#191f28">Hamster Express</text>
+<text font-family="Arial" x="48" y="156" font-size="24" fill="#4e5968">A small delivery game that connects interaction, reward and persistence</text>
+<rect x="48" y="202" width="1184" height="154" rx="16" fill="#f2f4f6"/>
+<text font-family="Arial" x="72" y="238" font-size="18" font-weight="700" fill="#1b64da">PURPOSE</text>
+<text font-family="Arial" x="72" y="276" font-size="24" fill="#191f28">Explore a complete small gameplay loop: control a hamster, pick up cargo, deliver it</text>
+<text font-family="Arial" x="72" y="306" font-size="24" fill="#191f28">to a goal, receive a reward and retain progress between sessions.</text>
+<text font-family="Arial" x="48" y="396" font-size="18" fill="#4e5968">Engineering overview · purpose, implementation and evidence</text>
+</g></svg>

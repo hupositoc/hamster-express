@@ -1,35 +1,153 @@
-# Hamster Express | 햄스터 운송 게임 프로토타입
+<a id="readme-top"></a>
 
-캐릭터 조작부터 화물 픽업·배달·보상·저장까지 이어지는 작은 게임 루프를 Unreal C++로 구현한 취미 프로젝트다.
+![Hamster Express: A small delivery game that connects interaction, reward and persistence](docs/assets/overview.svg)
 
-## 기술과 구성
+# Hamster Express
 
-Unreal Engine 5.8 · C++ · SaveGame · 런타임 월드 구성
+**A small delivery game that connects interaction, reward and persistence.**
+
+Explore a complete small gameplay loop: control a hamster, pick up cargo, deliver it to a goal, receive a reward and retain progress between sessions.
+
+| At a glance | |
+|---|---|
+| Context | Interactive Systems / Hobby |
+| Current evidence | Unreal C++ prototype; editor launch and packaging not reproduced here |
+| Stack | Unreal Engine 5.8, C++, Actor/Character classes, HUD, SaveGame, runtime world construction |
+| Author | [hupositoc](https://github.com/hupositoc) |
+
+[Case study](docs/case-study.md) · [Architecture](docs/architecture.md) · [Validation](docs/validation.md) · [Design rationale](docs/design-rationale.md)
+
+## Table of Contents
+
+- [About The Project](#about-the-project)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Acknowledgments](#acknowledgments)
+
+## About The Project
+
+### Why I built it
+
+A hobby project built around Unreal Engine C++. It is separate from marine testing and is presented as a prototype rather than a released commercial game.
+
+A game idea becomes useful engineering practice only when its pieces cooperate: movement, interaction state, world layout, feedback, rewards and saved progress. Building those pieces separately without a connected loop would leave a visual scene rather than a playable prototype.
+
+### What I implemented
+
+Use distinct actors for the character, cargo and delivery goal; keep completion/reward logic in the game mode; render messages through the HUD; and serialize player transform and delivery progress through a SaveGame object. Build a simple world at runtime to reduce dependence on external art during the technical prototype stage.
+
+### What this made possible
+
+- Exercise the full pick-up, travel, deliver and reward sequence in one codebase.
+- Explore player movement, sprinting and interaction through explicit C++ classes.
+- Persist player location, coins and delivery-completion state through manual save/load and completion-triggered saving.
+
+### What happened in practice
+
+The repository contains the connected gameplay classes, a +100 coin completion rule and save/load paths. Source inspection confirms those mechanisms; playability, performance and packaged-build reliability have not been measured in this environment.
+
+### Built With
+
+Unreal Engine 5.8, C++, Actor/Character classes, HUD, SaveGame, runtime world construction. Dependencies provide integration capabilities; the source links below identify the project-specific behavior.
+
+### Engineering decisions
+
+### Finish a small loop before expanding content
+
+One delivery with persistent consequences provides a clearer engineering milestone than a large scene without working interactions.
+
+### Centralize reward rules
+
+The completion guard prevents the same objective from granting repeated rewards through overlap callbacks.
+
+### Use placeholder art deliberately
+
+Runtime primitives keep the technical loop inspectable. They are not presented as final character production art or animation.
+
+### Code to inspect
+
+| Source entry point | Responsibility |
+|---|---|
+| [`AHEHamsterCharacter::Interact`](Source/HamsterExpress/HEHamsterCharacter.cpp#L148) | Handles player interaction and carrying state. |
+| [`AHECargo::Pickup`](Source/HamsterExpress/HECargo.cpp#L34) | Transfers cargo into the player interaction loop. |
+| [`AHEDeliveryGoal::OnGoalOverlap`](Source/HamsterExpress/HEDeliveryGoal.cpp#L43) | Detects arrival at a destination. |
+| [`AHEGameModeBase::CompleteDelivery`](Source/HamsterExpress/HEGameModeBase.cpp#L37) | Guards duplicate completion, grants coins and saves progress. |
+| [`AHEGameModeBase::LoadProgress`](Source/HamsterExpress/HEGameModeBase.cpp#L65) | Restores transform, coin and completion state. |
+| [`AHEWorldBuilder::BuildVillage`](Source/HamsterExpress/HEWorldBuilder.cpp#L117) | Constructs part of the prototype environment. |
+
+### AI-assisted engineering
+
+I use AI development tools to turn concrete needs into working software. My engineering responsibilities include defining the problem, interpreting the operating constraints, reviewing behavior, investigating failures and checking results. AI assistance is a development method; it is not evidence that a feature works. File-by-file AI authorship or a specific assistant/model is not claimed without the corresponding development record.
+
+## Getting Started
+
+### Prerequisites
+
+Unreal Engine 5.8, Visual Studio 2022 with C++ game-development tools, Windows SDK, and compatible graphics hardware.
+
+### Installation
 
 ```text
-Source/: 캐릭터·화물·목표·HUD·월드 구성
-Config/: 엔진 설정
-Tools/: 로컬 빌드 도우미
+git clone https://github.com/hupositoc/hamster-express.git
+cd hamster-express
 ```
 
-## 엔지니어링 관점
+Then follow the project-specific path:
 
-캐릭터·게임 규칙·저장 상태의 분리, 플레이어 행동과 보상 연결, 런타임 월드 생성. 기존 README에 구현 목록이 기록되어 있고 해당 C++ 클래스가 존재함을 확인했다.
+```text
+Open HamsterExpress.uproject in Unreal Engine 5.8.
+Build the C++ modules and press Play.
+WASD: move; Shift: sprint; E: interact; F5: save; F9: load.
+```
 
-## AI를 활용한 개발 방식
+The commands describe the intended setup. See the validation record for which parts were actually executed in the current environment.
 
-이 프로젝트는 AI 개발 도구를 활용한 문제 해결 포트폴리오의 일부다. AI가 코드를 작성했다는 사실보다 문제 정의, 기술 선택, 결과 검토, 실패 원인 분석과 검증 근거를 중심으로 설명한다. 원본 개발 대화 전체는 확인하지 못했으므로 파일별 수작업·AI 작성 비율이나 사용 모델은 추정하지 않는다.
+## Usage
 
-## 시작하기
+![Four-stage workflow for Hamster Express](docs/assets/workflow.svg)
 
-Unreal Engine 5.8, Visual Studio 2022 C++ 도구 체인과 Windows SDK를 설치한 뒤 `HamsterExpress.uproject`를 연다. 모듈 빌드를 진행하고 Play로 시작한다. 이동 WASD, 달리기 Shift, 픽업 E, 저장 F5, 불러오기 F9. 기존 프로젝트의 절차이며 이번에 실행을 재현하지 않았다.
+**Text equivalent:** Move / interact → Carry cargo → Complete delivery → Reward / save progress.
 
-## 실행과 현재 상태
+Start by defining the intended input and expected behavior. Save the configuration with the experiment or test session so that an output can be interpreted later. Review exceptions and raw evidence before treating a summary as a final conclusion.
 
-프로토타입이며 완성 게임이 아니다. Unreal Engine 5.8과 Windows C++ 도구 체인이 필요하다. 실제 에디터 실행·패키징·프레임 성능은 이번에 검증하지 않았다.
+Gameplay class relationships, the duplicate-completion guard, reward value and saved fields were inspected from C++ source. Editor, packaging and runtime tests remain separate tasks.
 
-이번 공개 준비에서는 원본의 선별 복사와 정적 점검을 수행했다. 지원 도구·장비가 없는 환경에서 실행 성공, 운영 성과, 모델 정확도를 새로 확인한 것으로 주장하지 않는다. 상세 검증 결과는 `VALIDATION.md`에 기록한다.
+### Boundaries and known limitations
 
-## 출처·공개 범위
+- The prototype needs Unreal Engine 5.8 and a supported Windows C++ environment.
+- No runtime footage, frame-time benchmark or packaged-build test is included.
+- Loading resets carrying state; recovery of an in-progress delivery is not a complete inventory system.
+- Rendering settings are configuration, not evidence of visual quality or measured GPU performance.
 
-원본 작업 폴더에서 소스를 선별한 공개 준비본이다. 로그·자격증명·로컬 SDK 경로·실제 업무 데이터·실행 바이너리는 제외했다. 기존 저작권 고지와 제3자 라이선스는 유지한다. 원본 파일의 고지와 의존성 이용 조건이 적용되며, 이 저장소의 문서가 새 라이선스를 부여하지 않는다.
+Read the [case study](docs/case-study.md) for the purpose and enabled workflow, and [architecture](docs/architecture.md) for the source-level explanation. The [validation document](docs/validation.md) separates verified checks, author-reported use and pending integration work.
+
+## Roadmap
+
+- [ ] Record a real gameplay capture after an editor build.
+- [ ] Test duplicate overlap, save/load and interrupted-delivery cases.
+- [ ] Replace placeholders with documented, redistributable art while preserving the loop.
+
+These are planned tasks, not completed capabilities.
+
+## Contributing
+
+Use an issue to describe a reproducible problem, expected behavior, actual behavior and the environment. For a change, keep the scope focused and attach the relevant test or recording. Do not submit private customer data, identifying test captures, credentials or confidential certification documents.
+
+## License
+
+Existing file-level notices and third-party licenses remain in force. A repository-wide open-source license has not been selected for all archived material. Public visibility does not grant rights beyond those existing terms. Documentation structure attribution does not relicense the software.
+
+## Contact
+
+[hupositoc on GitHub](https://github.com/hupositoc) · [Project issues](https://github.com/hupositoc/hamster-express/issues)
+
+## Acknowledgments
+
+The top-level section order follows [Best-README-Template](https://github.com/othneildrew/Best-README-Template), reviewed under its [Unlicense](https://github.com/othneildrew/Best-README-Template/blob/main/LICENSE.txt). All project narratives are written for this implementation. Visual guidance is attributed in [design rationale](docs/design-rationale.md). The broader 50-repository documentation review informs the reading order, source links and evidence presentation; it does not imply endorsement by those projects.
+
+
+[Engineering decision record](docs/engineering-decisions.md) · [Review of 50 reference repositories](docs/reference-review-50.md)
