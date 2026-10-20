@@ -1,0 +1,6 @@
+Hamster Express UE5.8 Rebuild v0.2.0
+Engine target: Unreal Engine 5.8
+Runtime module: HamsterExpress
+Rendering: DX12 / SM6 / Lumen / HWRT / VSM / TSR
+Primary target PC: i7-14700HX / RTX 4060 Laptop / 32 GB RAM
+Default window: 640x360, Alt+Enter fullscreen
